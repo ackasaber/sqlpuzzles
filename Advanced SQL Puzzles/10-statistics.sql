@@ -11,7 +11,7 @@ SELECT (SELECT AVG(number)
         WHERE i BETWEEN (SELECT (COUNT(*) + 1) DIV 2 FROM numbers)
                     AND (SELECT (COUNT(*) + 2) DIV 2 FROM numbers)) AS numbers_median,
                     
-        (WITH frequency AS
+       (WITH frequency AS
              (SELECT number, COUNT(number) AS times
               FROM numbers
               GROUP BY number)

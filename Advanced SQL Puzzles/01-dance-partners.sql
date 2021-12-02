@@ -8,9 +8,9 @@ WITH boys AS (SELECT student_id AS boy_id,
                  FROM dance_partners
                 WHERE gender = 'F')
 
-# SELECT boy_id, girld_id
-# FROM boys FULL OUTER JOIN girls
-#           ON boys.serial_no = girls.serial_no
+-- SELECT boy_id, girld_id
+-- FROM boys FULL OUTER JOIN girls
+--           ON boys.serial_no = girls.serial_no
 
 (SELECT boy_id, girl_id
    FROM boys LEFT OUTER JOIN girls
