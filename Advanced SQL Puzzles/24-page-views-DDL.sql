@@ -1,0 +1,25 @@
+CREATE VIEW numbers_10 AS
+SELECT 0 AS n UNION ALL
+SELECT 1 AS n UNION ALL
+SELECT 2 AS n UNION ALL
+SELECT 3 AS n UNION ALL
+SELECT 4 AS n UNION ALL
+SELECT 5 AS n UNION ALL
+SELECT 6 AS n UNION ALL
+SELECT 7 AS n UNION ALL
+SELECT 8 AS n UNION ALL
+SELECT 9 AS n;
+
+CREATE VIEW numbers_1000 AS
+SELECT low.n + mid.n * 10 + high.n * 100 AS n
+FROM numbers_10 low CROSS JOIN
+     numbers_10 mid CROSS JOIN
+     numbers_10 high;
+
+CREATE TABLE sample_data
+   (row_id BINARY(16), -- UUID
+    CONSTRAINT sample_data_pk PRIMARY KEY (row_id));
+
+INSERT INTO sample_data
+SELECT UUID_TO_BIN(UUID())
+FROM numbers_1000;
